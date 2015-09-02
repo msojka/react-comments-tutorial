@@ -23,6 +23,8 @@
           this.setState({comments: COMMENTS});
         },
         handleCommentSubmit: function(comment) {
+          // add comment optimisticaly - immediately
+          // if later handled by server
           COMMENTS.push(comment);
           this.setState({comments: COMMENTS});
         },
