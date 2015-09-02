@@ -22,6 +22,10 @@
         loadComments: function() {
           this.setState({comments: COMMENTS});
         },
+        handleCommentSubmit: function(comment) {
+          COMMENTS.push(comment);
+          this.setState({comments: COMMENTS});
+        },
         getInitialState: function() {
           return {comments: []}
         },
@@ -34,7 +38,7 @@
             <div className="commentBox">
               <h1>Comments</h1>
               <CommentList comments={this.state.comments} />
-              <CommentForm />
+              <CommentForm onCommentSubmit={this.handleCommentSubmit} />
             </div>
           );
         }
@@ -81,6 +85,7 @@
           if (!author || !text) {
             return;
           }
+          this.props.onCommentSubmit({author: author, text: text});
           authorDOM.value = '';
           textDOM.value = '';
         },
