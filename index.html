@@ -16,21 +16,19 @@
         render: function() {
           return (
             <div className="commentBox">
-              Hello World! I am a CommentBox.
+              <h1>Comments</h1>
+              <CommentList />
+              <CommentForm />
             </div>
           );
         }
       });
-      React.render(
-        <CommentBox />,
-        document.getElementById('content')
-      );
 
       var CommentList = React.createClass({
         render: function() {
           return (
             <div className="commentList">
-              Hello world! I am a CommentList.
+              Hello World! I am a CommentList.
             </div>
           );
         }
@@ -40,11 +38,16 @@
         render: function() {
           return (
             <div className="commentForm">
-              Hello World! I am a commentForm.
+              Hello World! I am a CommentForm.
             </div>
           );
         }
       });
+
+      React.render(
+        <CommentBox />,
+        document.getElementById('content')
+      );
 
     </script>
   </body>
