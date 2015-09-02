@@ -19,11 +19,15 @@
       ];
 
       var CommentBox = React.createClass({
+        loadComments: function() {
+          this.setState({comments: COMMENTS});
+        },
         getInitialState: function() {
           return {comments: []}
         },
         componentDidMount: function() {
-          this.setState({comments: COMMENTS});
+          this.loadComments();
+          setInterval(this.loadComments, this.props.pollInterval)
         },
         render: function() {
           return (
@@ -78,7 +82,7 @@
       });
 
       React.render(
-        <CommentBox />,
+        <CommentBox pollInterval={2000} />,
         document.getElementById('content')
       );
 
