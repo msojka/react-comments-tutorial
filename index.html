@@ -19,11 +19,14 @@
       ];
 
       var CommentBox = React.createClass({
+        getInitialState: function() {
+          return {comments: []}
+        },
         render: function() {
           return (
             <div className="commentBox">
               <h1>Comments</h1>
-              <CommentList comments={this.props.comments} />
+              <CommentList comments={this.state.comments} />
               <CommentForm />
             </div>
           );
@@ -72,7 +75,7 @@
       });
 
       React.render(
-        <CommentBox comments={COMMENTS} />,
+        <CommentBox />,
         document.getElementById('content')
       );
 
