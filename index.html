@@ -22,6 +22,9 @@
         getInitialState: function() {
           return {comments: []}
         },
+        componentDidMount: function() {
+          this.setState({comments: COMMENTS});
+        },
         render: function() {
           return (
             <div className="commentBox">
