@@ -13,12 +13,17 @@
     <div id="content"></div>
     <script type="text/jsx">
 
+      COMMENTS = [
+        {author: "John Doe I.", text: "This is one comment."},
+        {author: "John Doe II.", text: "This is *another* comment."}
+      ];
+
       var CommentBox = React.createClass({
         render: function() {
           return (
             <div className="commentBox">
               <h1>Comments</h1>
-              <CommentList />
+              <CommentList comments={this.props.comments} />
               <CommentForm />
             </div>
           );
@@ -27,10 +32,16 @@
 
       var CommentList = React.createClass({
         render: function() {
+          var commentNodes = this.props.comments.map(function (comment) {
+            return (
+              <Comment author={comment.author}>
+                {comment.text}
+              </Comment>
+            );
+          });
           return (
             <div className="commentList">
-              <Comment author="John Doe I.">This is one comment.</Comment>
-              <Comment author="John Doe II.">This is *another* comment.</Comment>
+              {commentNodes}
             </div>
           );
         }
@@ -61,7 +72,7 @@
       });
 
       React.render(
-        <CommentBox />,
+        <CommentBox comments={COMMENTS} />,
         document.getElementById('content')
       );
 
